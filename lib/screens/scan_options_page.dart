@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:vallet_app/Pages/LicencePlateInput.dart';
+import 'package:vallet_app/screens/licence_plate_input.dart';
 
 class ScanOptionsPage extends StatefulWidget {
 

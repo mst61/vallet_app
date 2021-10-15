@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-import 'ScanOptionsPage.dart';
-import 'SmsVerificationPage.dart';
+import 'sms_verification_page.dart';
 
 class LoginPage extends StatefulWidget {
 
