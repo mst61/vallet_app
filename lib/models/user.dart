@@ -1,13 +1,13 @@
 class User {
-  late int id;
+  int? id;
 
-  String name;
+  String? name;
 
   String phoneNumber;
 
-  late int code;
+  int? code;
 
-  late bool verified;
+  bool? verified;
 
   User(this.id, this.name, this.phoneNumber, this.code, this.verified);
 
@@ -23,4 +23,14 @@ class User {
             : null,
         code = (parsedJson['code'] != null) ? parsedJson['code'] : null,
         verified = parsedJson['verified'];
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['phoneNumber'] = this.phoneNumber;
+    data['code'] = this.code;
+    data['verified'] = this.verified;
+    return data;
+  }
 }
