@@ -9,7 +9,7 @@ class SmsVerificationPage extends StatefulWidget {
 }
 
 class _State extends State<SmsVerificationPage> {
-  bool apiCall = true;
+  bool apiCall = false;
   TextEditingController codeController = TextEditingController();
 
   @override
