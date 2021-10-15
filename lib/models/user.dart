@@ -1,28 +1,26 @@
 class User {
+  late int id;
 
-  final int id;
+  String name;
 
-  final String name;
+  String phoneNumber;
 
-  final String phoneNumber;
+  late int code;
 
-  final int code;
+  late bool verified;
 
-  final bool verified;
+  User(this.id, this.name, this.phoneNumber, this.code, this.verified);
 
-  User(this.id, this.name, this.phoneNumber, this.code,
-      this.verified);
+  User.fromNameAndPhoneNumber(String name, String phoneNumber)
+      : phoneNumber = phoneNumber,
+        name = name;
 
   User.fromJson(Map<dynamic, dynamic> parsedJson)
       : id = parsedJson['id'],
-        name = (parsedJson['name'] != null)
-            ? parsedJson['name']
-            : null,
+        name = (parsedJson['name'] != null) ? parsedJson['name'] : null,
         phoneNumber = (parsedJson['phoneNumber'] != null)
             ? parsedJson['phoneNumber']
             : null,
-        code = (parsedJson['code'] != null)
-            ? parsedJson['code']
-            : null,
+        code = (parsedJson['code'] != null) ? parsedJson['code'] : null,
         verified = parsedJson['verified'];
 }
