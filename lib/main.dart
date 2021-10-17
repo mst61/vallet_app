@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:vallet_app/screens/scan_options_page.dart';
 import 'screens/login_page.dart';
 
-void main(){runApp(App());}
-
+void main() {
+  runApp(App());
+}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -16,9 +18,7 @@ class App extends StatelessWidget {
   }
 }
 
-
 class SplashScreen extends StatefulWidget {
-
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -26,21 +26,21 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 4), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder:
-      (context)=>LoginPage(),));
+    Timer(Duration(seconds: 4), () {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginPage(),
+          ));
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: Center(child: Image(
-        image: AssetImage("assets/Vallet.jfif")
-      )),
+      body: Center(child: Image(image: AssetImage("assets/Vallet.jfif"))),
       backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
-
     );
   }
 }
