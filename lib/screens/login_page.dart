@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vallet_app/models/user.dart';
 import 'package:vallet_app/services/auth_service.dart';
 
@@ -114,10 +115,14 @@ class _State extends State<LoginPage> {
     var authService = new AuthService();
     User user = new User.fromNameAndPhoneNumber(
         nameController.text, phoneController.text);
-    authService.register(user).then((registeredUser) {
+    authService.register(user).then((registeredUser) async {
       setState(() {
         apiCall = false;
       });
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString("phoneNumber", user.phoneNumber);
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => SmsVerificationPage()),

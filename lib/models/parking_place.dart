@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ParkingPlace {
   final int id;
   final String name;
-  final String address;
+  final String? address;
   final double latitude;
   final double longitude;
   final bool active;

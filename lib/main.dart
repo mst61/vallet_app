@@ -1,6 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:vallet_app/screens/scan_options_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vallet_app/screens/parking_places_page.dart';
+
 import 'screens/login_page.dart';
 
 void main() {
@@ -26,12 +29,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginPage(),
-          ));
+    Timer(Duration(seconds: 4), () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool verified = prefs.getBool("verified") ?? false;
+      if (verified) {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => ParkingPlacesPage()));
+      } else {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => LoginPage()));
+      };
     });
     super.initState();
   }

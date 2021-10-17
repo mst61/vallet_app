@@ -39,8 +39,8 @@ class _State extends State<ParkingPlacesPage> {
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(
-            target: LatLng(41.0366, 28.9869),
-            zoom: 2,
+            target: LatLng(41.028640547111394, 28.970768432592504),
+            zoom: 15,
           ),
           markers: _markers.values.toSet(),
         ));

@@ -16,4 +16,12 @@ class Verify {
         success = (parsedJson['success'] != null)
             ? parsedJson['success']
             : null;
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['phoneNumber'] = this.phoneNumber;
+    data['code'] = this.code;
+    data['success'] = this.success;
+    return data;
+  }
 }

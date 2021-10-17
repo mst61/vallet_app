@@ -80,6 +80,7 @@ class _State extends State<SmsVerificationPage> {
         setState(() {
           apiCall = false;
         });
+        prefs.setBool("verified", true);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ScanOptionsPage()),
