@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vallet_app/screens/credit_card_list.dart';
 import 'package:vallet_app/screens/parking_places_page.dart';
 
 import 'screens/login_page.dart';
@@ -46,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Image(image: AssetImage("assets/Vallet.jfif"))),
+      body: Center(child: Image(image: AssetImage("assets/vallet_app.gif"))),
       backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
     );
   }
