@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vallet_app/screens/ButtonMapScreen.dart';
 import 'package:vallet_app/screens/credit_card_list.dart';
 import 'package:vallet_app/screens/parking_places_page.dart';
 
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
       bool verified = prefs.getBool("verified") ?? false;
       if (verified) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => ParkingPlacesPage()));
+            MaterialPageRoute(builder: (context) => ButtonMapScreen()));
       } else {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => LoginPage()));
