@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:vallet_app/screens/parking_places_page.dart';
 import 'package:vallet_app/services/parking_place_service.dart';
-import 'MyAccountPage.dart';
+import 'my_account_page.dart';
 import 'credit_card_list.dart';
 import 'licence_plate_input.dart';
 

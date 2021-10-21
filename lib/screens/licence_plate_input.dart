@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:vallet_app/screens/parking_fee.dart';
+import 'package:vallet_app/services/ticket_service.dart';
 
 import 'scan_options_page.dart';
 
@@ -9,11 +11,11 @@ class LicensePlate extends StatefulWidget {
 }
 
 class _State extends State<LicensePlate> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController plateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var ticketService = new TicketService();
     return Scaffold(
         backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
         appBar: AppBar(
@@ -28,14 +30,14 @@ class _State extends State<LicensePlate> {
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
-                 // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
+                  // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
                   child: Image(image: AssetImage("assets/Vallet.jfif")),
                   height: 150,
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: TextField(
-                    controller: nameController,
+                    controller: plateController,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.car_rental_outlined,
                             color: Colors.white),
@@ -50,7 +52,6 @@ class _State extends State<LicensePlate> {
                   ),
                 ),
                 Container(
-
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -65,7 +66,17 @@ class _State extends State<LicensePlate> {
                           )),
                       child: Text('ONAYLA'),
                       onPressed: () {
-                        print(nameController.text);
+                        ticketService
+                            .getTicketById(plateController.text)
+                            .then((ticket) => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ParkingFee(ticket),
+                                    ),
+                                  )
+                                });
                       },
                     )),
               ],
