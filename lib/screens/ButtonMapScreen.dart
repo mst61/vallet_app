@@ -4,6 +4,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vallet_app/screens/parking_places_page.dart';
 import 'package:vallet_app/services/parking_place_service.dart';
+import 'MyAccountPage.dart';
 import 'credit_card_list.dart';
 import 'licence_plate_input.dart';
 import 'scan_options_page.dart';
@@ -13,6 +14,7 @@ Widget _content = Container(
 );
 Color color = Color.fromRGBO(19, 101, 148, 1.0);
 class ButtonMapScreen extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => new _State();
 }
@@ -83,6 +85,7 @@ class _State extends State<ButtonMapScreen> {
 
         //  Icon(Icons.account_circle_outlined)
         ],
+
         onTap: (index){
           setState(() {
             if (index ==0 ){
@@ -96,10 +99,11 @@ class _State extends State<ButtonMapScreen> {
               _content = LicensePlate();
             }
             else if (index ==3){
-              _content = CreditCardList();
+              _content = MyAccount();
             }
           });
         },
       ),);
   }
 }
+

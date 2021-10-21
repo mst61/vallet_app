@@ -1,12 +1,27 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:vallet_app/models/credit_card.dart';
+import 'package:vallet_app/screens/parking_places_page.dart';
+import 'package:vallet_app/screens/profile_menu.dart';
 import 'package:vallet_app/services/card_service.dart';
+
+import 'ButtonMapScreen.dart';
+import 'MyAccountPage.dart';
 
 class CreditCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         appBar: AppBar(
+          leading: new IconButton(
+            icon: new Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () =>   Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ButtonMapScreen()),
+
+            )
+          ),
           title: Text('Ödeme Yöntemlerim'),
           backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
         ),
@@ -35,7 +50,9 @@ class BodyLayout extends StatelessWidget {
             primary: Color.fromRGBO(19, 101, 148, 1.0),
           ),
         ),
+
       ),
+
     ]);
   }
 }

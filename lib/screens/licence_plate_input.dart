@@ -17,12 +17,12 @@ class _State extends State<LicensePlate> {
     return Scaffold(
         backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
         body: Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(0),
             child: ListView(
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
+                 // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
                   child: Image(image: AssetImage("assets/Vallet.jfif")),
                 ),
                 Container(
