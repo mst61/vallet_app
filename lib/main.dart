@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vallet_app/screens/ButtonMapScreen.dart';
-import 'package:vallet_app/screens/credit_card_list.dart';
-import 'package:vallet_app/screens/parking_places_page.dart';
+import 'package:vallet_app/screens/button_map_screen.dart';
 
 import 'screens/login_page.dart';
 
