@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:vallet_app/screens/licence_plate_input.dart';
+import 'package:vallet_app/screens/parking_fee.dart';
+import 'package:vallet_app/services/ticket_service.dart';
 
 class ScanOptionsPage extends StatefulWidget {
   @override
@@ -48,10 +51,7 @@ class _State extends State<ScanOptionsPage> {
                           fontSize: 18,
                         )),
                     child: Text('BİLETİNİ TARA'),
-                    onPressed: () {
-                      FlutterBarcodeScanner.scanBarcode(
-                          "#ff6666", "Cancel", false, ScanMode.DEFAULT);
-                    },
+                    onPressed: () => scanBarcode()
                   )),
               Container(
                   height: 70,
@@ -76,22 +76,7 @@ class _State extends State<ScanOptionsPage> {
                     },
                   )),
             ],
-          )),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _current,
-        onTap: _selectTab,
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.payment),
-            label: 'Ödeme',
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.map_outlined),
-            label: 'Otoparklar',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil')
-        ],
-      ),
+          ))
     );
   }
 
@@ -99,5 +84,27 @@ class _State extends State<ScanOptionsPage> {
     setState(() {
       _current = value;
     });
+  }
+
+  Future<void> scanBarcode() async {
+    String ticketId;
+    var ticketService = new TicketService();
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      String ticketId = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
+      print(ticketId);
+      ticketService.getTicketById(ticketId).then((ticket) => {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                ParkingFee(ticket),
+          ),
+        )
+      });
+    } on PlatformException {
+      ticketId = 'Failed to get platform version.';
+    }
   }
 }
