@@ -2,6 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:vallet_app/screens/parking_places_page.dart';
+import 'package:vallet_app/services/parking_place_service.dart';
+import 'MyAccountPage.dart';
 import 'credit_card_list.dart';
 import 'licence_plate_input.dart';
 
@@ -84,8 +86,9 @@ class _State extends State<ButtonMapScreen> {
                   "#ff6666", "Cancel", false, ScanMode.DEFAULT) as Widget;
             } else if (index == 2) {
               _content = LicensePlate();
-            } else if (index == 3) {
-              _content = CreditCardList();
+            }
+            else if (index ==3){
+              _content = MyAccount();
             }
           });
         },
@@ -93,3 +96,4 @@ class _State extends State<ButtonMapScreen> {
     );
   }
 }
+
