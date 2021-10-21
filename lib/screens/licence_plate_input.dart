@@ -16,6 +16,12 @@ class _State extends State<LicensePlate> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        appBar: AppBar(
+          title: Text('Ödeme Yöntemlerim'),
+          leading: BackButton(color: Colors.white),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+        ),
         body: Padding(
             padding: EdgeInsets.all(10),
             child: ListView(
@@ -24,6 +30,7 @@ class _State extends State<LicensePlate> {
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(10),
                   child: Image(image: AssetImage("assets/Vallet.jfif")),
+                  height: 150,
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
@@ -38,12 +45,12 @@ class _State extends State<LicensePlate> {
                         labelText: 'PLAKA',
                         labelStyle: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 16,
                         )),
                   ),
                 ),
                 Container(
-                    height: 70,
+
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -54,7 +61,7 @@ class _State extends State<LicensePlate> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 50, vertical: 20),
                           textStyle: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                           )),
                       child: Text('ONAYLA'),
                       onPressed: () {

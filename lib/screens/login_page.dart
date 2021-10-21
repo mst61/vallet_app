@@ -49,10 +49,9 @@ class _State extends State<LoginPage> {
                     Container(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                       child: TextField(
-                        obscureText: true,
                         controller: phoneController,
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock_open_outlined,
+                            prefixIcon: Icon(Icons.contact_phone,
                                 color: Colors.white),
                             filled: true,
                             fillColor: Color.fromRGBO(185, 207, 221, 1.0),

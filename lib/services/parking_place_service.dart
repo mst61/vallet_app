@@ -12,9 +12,9 @@ class ParkingPlaceService {
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      var rb = response.body;
+      var rb = response.bodyBytes;
 
-      var list = json.decode(rb) as List;
+      var list = json.decode(utf8.decode(rb)) as List;
       List<ParkingPlace> parkingPlaces = list.map((i)=>ParkingPlace.fromJson(i)).toList();
       return parkingPlaces;
     } else {

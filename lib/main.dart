@@ -48,7 +48,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Image(image: AssetImage("assets/vallet_app.gif"))),
+      body: Center(
+          child: Image(
+        image: AssetImage("assets/vallet_app.gif"),
+        width: MediaQuery.of(context).size.width * 0.8,
+      )),
       backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
     );
   }

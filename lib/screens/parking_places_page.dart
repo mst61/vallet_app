@@ -11,25 +11,23 @@ class ParkingPlacesPage extends StatefulWidget {
 }
 
 class _State extends State<ParkingPlacesPage> {
-
   final parkingPlaceService = new ParkingPlaceService();
 
   final Map<String, Marker> _markers = {};
-   late BitmapDescriptor mapMarker;
+  late BitmapDescriptor mapMarker;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setCustomMarker();
   }
 
   void setCustomMarker() async {
-    mapMarker= await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(), "assets/ParkingIcon.png",);
-
-}
-
+    mapMarker = await BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(),
+      "assets/ParkingIcon.png",
+    );
+  }
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
     var parkingPlaces = await parkingPlaceService.getParkingPlaces();
@@ -54,18 +52,19 @@ class _State extends State<ParkingPlacesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
-    ),
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
-        body: Padding(
-    padding: EdgeInsets.only(bottom: 16.0),
-    child :GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: const CameraPosition(
-            target: LatLng(41.028640547111394, 28.970768432592504),
-            zoom: 15,
-          ),
-          markers: _markers.values.toSet(),
-        )));
+          leading: BackButton(color: Colors.white),
+          title: Text("Otoparklar"),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+        ),
+        body: Container(
+            child: GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(41.028640547111394, 28.970768432592504),
+                zoom: 15,
+              ),
+              markers: _markers.values.toSet(),
+            )));
   }
 }
