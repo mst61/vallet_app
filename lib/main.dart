@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vallet_app/screens/button_map_screen.dart';
+import 'package:vallet_app/screens/credit_card_list.dart';
 
 import 'screens/login_page.dart';
 
@@ -34,10 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
       bool verified = prefs.getBool("verified") ?? false;
       if (verified) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => ButtonMapScreen()));
+            MaterialPageRoute(builder: (context) => CreditCardList()));
       } else {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginPage()));
+            MaterialPageRoute(builder: (context) => CreditCardList()));
       };
     });
     super.initState();

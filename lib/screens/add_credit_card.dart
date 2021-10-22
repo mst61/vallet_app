@@ -7,6 +7,7 @@ import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:flutter_credit_card/custom_card_type_icon.dart';
 import 'package:flutter_credit_card/glassmorphism_config.dart';
 
+import 'button_map_screen.dart';
 import 'scan_options_page.dart';
 
 class AddCreditCard extends StatefulWidget {
@@ -41,10 +42,15 @@ class _State extends State<AddCreditCard> {
     return MaterialApp(
       title: 'Add Credit Card',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.lime,
-      ),
+
       home: Scaffold(
+        appBar: AppBar(
+          title: Text('Kart ekleme'),
+          leading: BackButton(color: Colors.white),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+        ),
+
         resizeToAvoidBottomInset: false,
         body: Container(
           decoration: BoxDecoration(
@@ -139,7 +145,7 @@ class _State extends State<AddCreditCard> {
                           child: Container(
                             margin: const EdgeInsets.all(12),
                             child: const Text(
-                              'Validate',
+                              'Kaydet',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'halter',
