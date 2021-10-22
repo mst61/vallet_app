@@ -39,14 +39,59 @@ class _State extends State<ParkingPlacesPage> {
           markerId: MarkerId(parkingPlace.name),
           position: LatLng(parkingPlace.latitude, parkingPlace.longitude),
           infoWindow: InfoWindow(
-            title: parkingPlace.name,
-            snippet: parkingPlace.address,
+            title:parkingPlace.name,
+            snippet: "Fiyat Listesi İçin Dokunun",
+
+              onTap: (){
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                      elevation: 16,
+                      child: Container(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            //shrinkWrap: true,
+                            children: <Widget>[
+                              SizedBox(height: 20),
+                              Center(child: Text('Fiyat Listesi', style:
+                              TextStyle(fontSize: 20)),
+                              ),
+                              SizedBox(height: 20),
+                              Center(child: Text(parkingPlace.name, style:
+                              TextStyle(fontSize: 20)),
+                              ),
+                              SizedBox(height: 20),
+                              _hoursRow('0', '1', 1000),
+                              _hoursRow('1', '2', 2000),
+                              _hoursRow('2', '3', 3000),
+                              _hoursRow('3', '4', 4000),
+                              _hoursRow('4', '5', 5000),
+                              _hoursRow('5', '6', 6000),
+                              _hoursRow('6', '7', 1000),
+                              _hoursRow('7', '8', 2000),
+                              _hoursRow('8', '9', 3000),
+                              _hoursRow('9', '10', 4000),
+                              _hoursRow('10', '11', 5000),
+                              _hoursRow('11', '12', 6000),
+                            ],
+                          ),
+                        ),),
+                    );
+                  },
+                );
+
+              }
           ),
+
         );
         _markers[parkingPlace.name] = marker;
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,4 +112,31 @@ class _State extends State<ParkingPlacesPage> {
               markers: _markers.values.toSet(),
             )));
   }
+}
+
+Widget _hoursRow(String first_hour, String second_hour, double price) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+    child: Column(
+      children: <Widget>[
+        SizedBox(height: 12),
+        Container(height: 2, color: Color.fromRGBO(19, 101, 148, 1.0)),
+        SizedBox(height: 12),
+        Row(
+          children: <Widget>[
+            Text(first_hour+"    -"),
+            SizedBox(width: 12),
+            Text(second_hour+"    saat arası"),
+            Spacer(),
+            Container(
+              decoration: BoxDecoration(color: Color.fromRGBO(19, 101, 148, 1.0),
+                  borderRadius: BorderRadius.circular(20)),
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+              child: Text('$price'+"  TL", style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
 }
