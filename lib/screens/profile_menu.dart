@@ -15,13 +15,13 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: TextButton(
         style: TextButton.styleFrom(
           primary: Colors.black,
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(15),
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           backgroundColor: Color(0xFFF5F6F9),
         ),
         onPressed: press,

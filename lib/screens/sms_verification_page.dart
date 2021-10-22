@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vallet_app/models/verify.dart';
+import 'package:vallet_app/screens/button_map_screen.dart';
 import 'package:vallet_app/screens/scan_options_page.dart';
 import 'package:vallet_app/services/auth_service.dart';
 
@@ -83,7 +84,7 @@ class _State extends State<SmsVerificationPage> {
         prefs.setBool("verified", true);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ScanOptionsPage()),
+          MaterialPageRoute(builder: (context) => ButtonMapScreen()),
         );
       }, onError: (error) {
         setState(() {

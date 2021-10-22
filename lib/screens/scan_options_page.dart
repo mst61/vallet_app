@@ -11,79 +11,106 @@ class ScanOptionsPage extends StatefulWidget {
 }
 
 class _State extends State<ScanOptionsPage> {
-  int _current = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: const Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: ClipRect(
-            child: Image(
-              fit: BoxFit.fill,
-              image: AssetImage('assets/Vallet.jfif'),
-            ),
-          ),
+        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        appBar: AppBar(
+          title: Text('Ödeme Yöntemi'),
+          leading: BackButton(color: Colors.white),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
         ),
-      ),
-      body: Padding(
-          padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-          child: ListView(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(20, 200, 20, 0),
-              ),
-              Container(
-                  height: 70,
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        side: BorderSide(
-                            width: 2.0,
-                            color: Color.fromRGBO(185, 207, 221, 1.0)),
-                        primary: Color.fromRGBO(19, 101, 148, 1.0),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                        textStyle: TextStyle(
-                          fontSize: 18,
-                        )),
-                    child: Text('BİLETİNİ TARA'),
-                    onPressed: () => scanBarcode()
-                  )),
-              Container(
-                  height: 70,
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        side: BorderSide(
-                            width: 2.0,
-                            color: Color.fromRGBO(185, 207, 221, 1.0)),
-                        primary: Color.fromRGBO(19, 101, 148, 1.0),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                        textStyle: TextStyle(
-                          fontSize: 18,
-                        )),
-                    child: Text('PLAKANI GİR'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LicensePlate()),
-                      );
-                    },
-                  )),
-            ],
-          ))
-    );
-  }
+        body: Padding(
+            padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  decoration: BoxDecoration(
+                    border: Border.fromBorderSide(
+                      BorderSide(
+                          width: 1.0,
+                          color: Color.fromRGBO(185, 207, 221, 1.0)),
+                    ),
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      new Container(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.payment, size: 24, color: Colors.white,),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  'Lütfen Ödeme Yönteminizi seçiniz',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 18.0,
+                                    color: Colors.white
+                                  ),
+                                ),
+                              )
+                            ]),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                    height: 70,
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: ElevatedButton.icon(
+                      onPressed: () => scanBarcode(),
+                      icon: Icon(Icons.qr_code),
+                      label: Text('BİLETİNİ TARA',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                      style: ElevatedButton.styleFrom(
 
-  void _selectTab(int value) {
-    setState(() {
-      _current = value;
-    });
+                        padding: EdgeInsets.all(15),
+                        side: BorderSide(
+                            width: 1.0,
+                            color: Color.fromRGBO(185, 207, 221, 1.0)),
+                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                      ),
+                    )),
+                Container(
+                    height: 70,
+                    padding: EdgeInsets.fromLTRB(0, 10, 00, 0),
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LicensePlate()),
+                        );
+                      },
+                      icon: Icon(Icons.car_rental),
+                      label: Text('PLAKANI GİR',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                      style: ElevatedButton.styleFrom(
+
+                        padding: EdgeInsets.all(15),
+                        side: BorderSide(
+                            width: 1.0,
+                            color: Color.fromRGBO(185, 207, 221, 1.0)),
+                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                      ),
+                    )),
+              ],
+            )));
   }
 
   Future<void> scanBarcode() async {
@@ -93,16 +120,14 @@ class _State extends State<ScanOptionsPage> {
     try {
       String ticketId = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
-      print(ticketId);
       ticketService.getTicketById(ticketId).then((ticket) => {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                ParkingFee(ticket),
-          ),
-        )
-      });
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ParkingFee(ticket),
+              ),
+            )
+          });
     } on PlatformException {
       ticketId = 'Failed to get platform version.';
     }
