@@ -35,10 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
       bool verified = prefs.getBool("verified") ?? false;
       if (verified) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => CreditCardList()));
+            MaterialPageRoute(builder: (context) => ButtonMapScreen()));
       } else {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => CreditCardList()));
+            MaterialPageRoute(builder: (context) => LoginPage()));
       };
     });
     super.initState();
