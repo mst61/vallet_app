@@ -104,6 +104,21 @@ class _State extends State<LicensePlate> {
               ),
               Expanded(
                   child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text('ya da', style: TextStyle( color: Colors.white),),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                          onPressed: () {},
+                          child: const Text('Biletini Tara', style: TextStyle( color: Colors.white,  decoration: TextDecoration.underline,),),
+                        )
+                      ],
+                    ),
                 color: Color(0xff005381),
               ))
             ])));
