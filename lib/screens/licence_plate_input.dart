@@ -17,38 +17,61 @@ class _State extends State<LicensePlate> {
   Widget build(BuildContext context) {
     var ticketService = new TicketService();
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        backgroundColor: Color(0xff005381),
         appBar: AppBar(
-          title: Text('Ödeme Yöntemlerim'),
-          leading: BackButton(color: Colors.white),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+          backgroundColor: Color(0xff005381),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_white.png',
+                fit: BoxFit.contain,
+                height: 24,
+              ),
+              Container(
+                  padding: const EdgeInsets.all(24.0), )
+            ],
+
+          ),
         ),
         body: Padding(
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
             child: ListView(
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
                   // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
-                  child: Image(image: AssetImage("assets/Vallet.jfif")),
-                  height: 150,
+                  child: Image(image: AssetImage("assets/car_icon.png")),
+                  height: 60,
                 ),
                 Container(
+                  alignment: Alignment.center,
+                  child:
+                  Text(
+                    'Otopark girişinde bilet almadıysan aracının plakasını gir',
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+                Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  height: 60,
                   child: TextField(
                     controller: plateController,
+                    textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.car_rental_outlined,
-                            color: Colors.white),
-                        filled: true,
-                        fillColor: Color.fromRGBO(185, 207, 221, 1.0),
-                        //border: OutlineInputBorder(),
-                        labelText: 'PLAKA',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        )),
+                      hintText: 'Plakanı Gir',
+                      filled: true,
+                      fillColor: Color.fromRGBO(185, 207, 221, 1.0),
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      )
+                    ),
+
                   ),
                 ),
                 Container(
@@ -58,7 +81,7 @@ class _State extends State<LicensePlate> {
                           side: BorderSide(
                               width: 2.0,
                               color: Color.fromRGBO(185, 207, 221, 1.0)),
-                          primary: Color.fromRGBO(19, 101, 148, 1.0),
+                          primary: Color(0xff005381),
                           padding: EdgeInsets.symmetric(
                               horizontal: 50, vertical: 20),
                           textStyle: TextStyle(
@@ -72,8 +95,7 @@ class _State extends State<LicensePlate> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          ParkingFee(ticket),
+                                      builder: (context) => ParkingFee(ticket),
                                     ),
                                   )
                                 });
