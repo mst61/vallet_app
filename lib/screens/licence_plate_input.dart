@@ -29,79 +29,83 @@ class _State extends State<LicensePlate> {
                 height: 24,
               ),
               Container(
-                  padding: const EdgeInsets.all(24.0), )
+                padding: const EdgeInsets.all(24.0),
+              )
             ],
-
           ),
         ),
         body: Padding(
             padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
-                  child: Image(image: AssetImage("assets/car_icon.png")),
-                  height: 60,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  child:
-                  Text(
-                    'Otopark girişinde bilet almadıysan aracının plakasını gir',
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300),
+            child: Column(children: [
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
+                    child: Image(image: AssetImage("assets/car_icon.png")),
+                    height: 60,
                   ),
-                ),
-                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-                Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                  height: 60,
-                  child: TextField(
-                    controller: plateController,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: 'Plakanı Gir',
-                      filled: true,
-                      fillColor: Color.fromRGBO(185, 207, 221, 1.0),
-                      labelStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      )
+                  Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Otopark girişinde bilet almadıysan aracının plakasını gir',
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300),
                     ),
-
                   ),
-                ),
-                Container(
+                  Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+                  Container(
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(
-                              width: 2.0,
-                              color: Color.fromRGBO(185, 207, 221, 1.0)),
-                          primary: Color(0xff005381),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 20),
-                          textStyle: TextStyle(
+                    height: 50,
+                    child: TextField(
+                      controller: plateController,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                          hintText: 'Plakanı Gir',
+                          filled: true,
+                          fillColor: Color.fromRGBO(185, 207, 221, 1.0),
+                          labelStyle: TextStyle(
+                            color: Colors.white,
                             fontSize: 16,
                           )),
-                      child: Text('ONAYLA'),
-                      onPressed: () {
-                        ticketService
-                            .getTicketById(plateController.text)
-                            .then((ticket) => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ParkingFee(ticket),
-                                    ),
-                                  )
-                                });
-                      },
-                    )),
-              ],
-            )));
+                    ),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: BorderSide(
+                                width: 2.0,
+                                color: Color.fromRGBO(185, 207, 221, 1.0)),
+                            primary: Color(0xff005381),
+                            textStyle: TextStyle(
+                              fontSize: 16,
+                            )),
+                        child: Text('ONAYLA'),
+                        onPressed: () {
+                          ticketService
+                              .getTicketById(plateController.text)
+                              .then((ticket) => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ParkingFee(ticket),
+                                      ),
+                                    )
+                                  });
+                        },
+                      )),
+                ],
+              ),
+              Expanded(
+                  child: Container(
+                color: Color(0xff005381),
+              ))
+            ])));
   }
 }
