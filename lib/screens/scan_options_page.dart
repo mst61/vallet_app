@@ -17,9 +17,7 @@ class _State extends State<ScanOptionsPage> {
         backgroundColor: Color(0xff005381),
         body: Column(children: <Widget>[
           Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-            color: Color(0xff005381),
+              child: new Container(
             child: (Row(
               children: <Widget>[
                 Expanded(
@@ -37,6 +35,8 @@ class _State extends State<ScanOptionsPage> {
                 )
               ],
             )),
+            padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+            color: Color(0xff005381),
           )),
           Container(
             height: 300,
@@ -62,7 +62,7 @@ class _State extends State<ScanOptionsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                              height: 45,
+                              height: 60,
                               child: Image(
                                 image: AssetImage("assets/scanning_icon.png"),
                               )),
@@ -96,7 +96,7 @@ class _State extends State<ScanOptionsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                              height: 45,
+                              height: 60,
                               child: Image(
                                 image: AssetImage("assets/car_icon.png"),
                               )),
