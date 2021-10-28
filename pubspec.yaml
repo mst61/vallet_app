@@ -78,3 +78,22 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: DinPro
+      fonts:
+        - asset: assets/fonts/DINPro-Bold.otf
+          weight: 600
+        - asset: assets/fonts/DINPro-BoldItalic.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/DINPro-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/DINPro-Light.otf
+          weight: 300
+        - asset: assets/fonts/DINPro-Medium.otf
+          weight: 400
+        - asset: assets/fonts/DINPro-MediumItalic.otf
+          weight: 400
+          style: italic
+
