@@ -14,94 +14,134 @@ class _State extends State<ScanOptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
-        body: Stack(children: [
-          Column(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Padding(padding: EdgeInsets.fromLTRB(0, 50, 0, 0)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage("assets/loading_gif_white.png"),
-                          height: 25.93,
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Row(
+        backgroundColor: Color(0xff005381),
+        body: Column(children: <Widget>[
+          Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+            color: Color(0xff005381),
+            child: (Row(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.fromLTRB(0, 40, 0, 0)),
+                      Image(
+                        image: AssetImage("assets/loading_gif_white.png"),
+                        height: 25.93,
+                      ),
+                      Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
+                      Divider(color: Colors.white)
+                    ],
+                  ),
+                )
+              ],
+            )),
+          )),
+          Container(
+            height: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () => scanBarcode(),
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                        padding: EdgeInsets.all(30),
+                        primary: Color(0xff005381),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 2.0,
-                              color: Color.fromRGBO(185, 207, 221, 1.0)),
-                        ),
+                            borderRadius: BorderRadius.circular(6.0),
+                            side: BorderSide(
+                                width: 1.0,
+                                color: Color.fromRGBO(255, 255, 255, 1.0))),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image(
-                            image: AssetImage("assets/loading_gif_white.png"),
-                            height: 25.93,
-                          ),
+                          Container(
+                              height: 45,
+                              child: Image(
+                                image: AssetImage("assets/scanning_icon.png"),
+                              )),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                           Text('BİLETİNİ TARA',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal)),
                         ],
                       ),
                     ),
                     Padding(padding: EdgeInsets.all(10)),
                     ElevatedButton(
-                      onPressed:() => Navigator.push(
+                      onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LicensePlate()),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                        padding: EdgeInsets.all(30),
+                        primary: Color(0xff005381),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.0),
                           side: BorderSide(
-                              width: 2.0,
-                              color: Color.fromRGBO(185, 207, 221, 1.0)),
+                              width: 1.0,
+                              color: Color.fromRGBO(255, 255, 255, 1.0)),
                         ),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image(
-                            image: AssetImage("assets/loading_gif_white.png"),
-                            height: 25.93,
-                          ),
+                          Container(
+                              height: 45,
+                              child: Image(
+                                image: AssetImage("assets/car_icon.png"),
+                              )),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                           Text('PLAKANI GİR',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal)),
                         ],
                       ),
                     ),
                   ],
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [],
-                ),
-              )
-            ],
-          )
+                Padding(padding: EdgeInsets.all(10)),
+                Flexible(
+                  child: Wrap(
+                    direction: Axis.vertical,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Otopark girişinde aldığın fiziksel bileti tara.',
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300),
+                      ),
+                      Text(
+                        'Otopark girişinde bilet almadıysan aracının plakasını gir.',
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            color: Color(0xff005381),
+          ),
+          Expanded(
+              child: Container(
+            color: Color(0xff005381),
+          )),
         ]));
   }
 
