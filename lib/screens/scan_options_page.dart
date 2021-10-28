@@ -14,25 +14,14 @@ class _State extends State<ScanOptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: BackButton(color: Colors.white),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
-        ),
         backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
         body: Stack(children: [
-          Positioned.fill(
-            child: Container(),
-          ),
           Column(
             children: [
               Expanded(
-                // Here your column with texts
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+                    Padding(padding: EdgeInsets.fromLTRB(0, 50, 0, 0)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -46,53 +35,71 @@ class _State extends State<ScanOptionsPage> {
                 ),
               ),
               Expanded(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => scanBarcode(),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(19, 101, 148, 1.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => scanBarcode(),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              width: 2.0,
+                              color: Color.fromRGBO(185, 207, 221, 1.0)),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image(
+                            image: AssetImage("assets/loading_gif_white.png"),
+                            height: 25.93,
+                          ),
+                          Text('BİLETİNİ TARA',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ],
                       ),
                     ),
-                    child: Column(
-                      children: [
-                        Image(
-                          image: AssetImage("assets/loading_gif_white.png"),
-                          height: 25.93,
-                        ),
-                        Text('BİLETİNİ TARA',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => {
-                      Navigator.push(
+                    Padding(padding: EdgeInsets.all(10)),
+                    ElevatedButton(
+                      onPressed:() => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LicensePlate()),
-                      )
-                    },
-                    child: Column(
-                      children: [
-                        Image(
-                          image: AssetImage("assets/loading_gif_white.png"),
-                          height: 25.93,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromRGBO(19, 101, 148, 1.0),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              width: 2.0,
+                              color: Color.fromRGBO(185, 207, 221, 1.0)),
                         ),
-                        Text('PLAKANI GİR',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image(
+                            image: AssetImage("assets/loading_gif_white.png"),
+                            height: 25.93,
+                          ),
+                          Text('PLAKANI GİR',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ))
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  children: [],
+                ),
+              )
             ],
           )
         ]));
