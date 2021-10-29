@@ -17,6 +17,7 @@ class _State extends State<LicensePlate> {
   Widget build(BuildContext context) {
     var ticketService = new TicketService();
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Color(0xff005381),
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
