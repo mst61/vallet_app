@@ -18,10 +18,7 @@ class _State extends State<ScanOptionsPage> {
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
           elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+          automaticallyImplyLeading: false,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -29,9 +26,6 @@ class _State extends State<ScanOptionsPage> {
                 'assets/loading_gif_white.png',
                 fit: BoxFit.contain,
                 height: 24,
-              ),
-              Container(
-                padding: const EdgeInsets.all(24.0),
               )
             ],
           ),
