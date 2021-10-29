@@ -16,43 +16,76 @@ class _State extends State<CreditCardList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Ödeme Yöntemlerim'),
-          leading: new IconButton(
-              icon: new Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ButtonMapScreen()),
-                  )),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios,
+                color: Color.fromRGBO(19, 101, 148, 1.0)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_blue.png',
+                fit: BoxFit.contain,
+                height: 24,
+              ),
+              Container(
+                padding: const EdgeInsets.all(24.0),
+              )
+            ],
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Color.fromRGBO(19, 101, 148, 1.0)),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
         ),
         body: Container(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(children: [
-            cardListWidget(context),
             Container(
-              padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-              width: double.infinity, // <-- match_parent
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddCreditCard()),
-                  );
-                },
-                icon: Icon(Icons.add),
-                label: Text('Yeni Kart Ekle',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold)),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(15),
-                  side: BorderSide(
-                      width: 2.0, color: Color.fromRGBO(185, 207, 221, 1.0)),
-                  primary: Color.fromRGBO(19, 101, 148, 1.0),
+                height: MediaQuery.of(context).size.height * 0.2,
+            ),
+            Expanded(child: cardListWidget(context)),
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddCreditCard()));
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  border: Border.fromBorderSide(
+                    BorderSide(color: Color.fromRGBO(19, 101, 148, 1.0)),
+                  ),
+                  borderRadius: BorderRadius.circular(3.0),
+                ),
+                width: double.infinity,
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(children: <Widget>[
+                      Padding(padding: EdgeInsets.all(5)),
+                      Icon(Icons.credit_card,
+                          color: Color.fromRGBO(19, 101, 148, 1.0)),
+                      Padding(padding: EdgeInsets.all(5)),
+                      Text('Yeni Kart Ekle',
+                          style: TextStyle(
+                              color: Color.fromRGBO(19, 101, 148, 1.0))),
+                    ]),
+                    Icon(Icons.add, color: Color.fromRGBO(19, 101, 148, 1.0)),
+                  ],
                 ),
               ),
-            ),
+            )
           ]),
         ));
   }
@@ -74,9 +107,7 @@ Widget cardListWidget(BuildContext context) {
       }
       return snapshot.data!.isEmpty
           ? Center(
-              child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  0, MediaQuery.of(context).size.height * 0.3, 0, 25),
+              child: Container(
               child: Text(
                 'Henüz Kart Eklemediniz',
                 textAlign: TextAlign.center,
@@ -96,22 +127,27 @@ Widget cardListWidget(BuildContext context) {
               itemBuilder: (context, index) {
                 CreditCard card = snapshot.data?[index];
                 return Card(
-                  color: Color.fromRGBO(19, 101, 148, 1.0),
-                  shape: new RoundedRectangleBorder(
-                      side: new BorderSide(
-                          color: Color.fromRGBO(185, 207, 221, 1.0),
-                          width: 2.0),
-                      borderRadius: BorderRadius.circular(4.0)),
-                  child: ListTile(
-                    leading: Icon(Icons.credit_card, color: Colors.white),
-                    title: Text(card.cardDesc,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold)),
-                    subtitle: Text(card.cardNo,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w300)),
-                  ),
-                );
+                    color: Color.fromRGBO(19, 101, 148, 1.0),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(children: <Widget>[
+                            Icon(Icons.credit_card, color: Colors.white),
+                            Padding(padding: EdgeInsets.all(5)),
+                            Text(card.cardDesc,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                )),
+                          ]),
+                          Text(card.cardNo,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal)),
+                        ],
+                      ),
+                    ));
               },
             );
     },

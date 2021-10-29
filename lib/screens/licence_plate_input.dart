@@ -53,7 +53,6 @@ class _State extends State<LicensePlate> {
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    // padding: EdgeInsets.fromLTRB(10, 27, 10, 0),
                     child: Image(image: AssetImage("assets/car_icon.png")),
                     height: 60,
                   ),
