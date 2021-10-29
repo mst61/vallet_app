@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vallet_app/models/credit_card.dart';
+import 'package:vallet_app/screens/payment_succeeded.dart';
 import 'package:vallet_app/services/card_service.dart';
 
 import 'add_credit_card.dart';
@@ -128,25 +129,32 @@ Widget cardListWidget(BuildContext context) {
                 CreditCard card = snapshot.data?[index];
                 return Card(
                     color: Color.fromRGBO(19, 101, 148, 1.0),
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(children: <Widget>[
-                            Icon(Icons.credit_card, color: Colors.white),
-                            Padding(padding: EdgeInsets.all(5)),
-                            Text(card.cardDesc,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => PaymentSucceeded()));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(children: <Widget>[
+                              Icon(Icons.credit_card, color: Colors.white),
+                              Padding(padding: EdgeInsets.all(5)),
+                              Text(card.cardDesc,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  )),
+                            ]),
+                            Text(card.cardNo,
                                 style: TextStyle(
-                                  color: Colors.white,
-                                )),
-                          ]),
-                          Text(card.cardNo,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.normal)),
-                        ],
-                      ),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal)),
+                          ],
+                        ),
+                      )
                     ));
               },
             );

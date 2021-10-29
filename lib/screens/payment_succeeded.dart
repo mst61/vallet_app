@@ -11,27 +11,48 @@ class _State extends State<PaymentSucceeded> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        backgroundColor: Color(0xff005381),
+        appBar: AppBar(
+          backgroundColor: Color(0xff005381),
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_white.png',
+                fit: BoxFit.contain,
+                height: 24,
+              )
+            ],
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Colors.white),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
+        ),
         body: Container(
           height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color.fromRGBO(19, 101, 148, 1.0), Colors.white],
+              colors: [Color(0xff005381), Colors.white],
               stops: [0.5, 0.5],
             ),
           ),
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Expanded(child: Container()),
               new Container(
                   alignment: Alignment.center,
                   width: 200.0,
                   height: 200.0,
                   decoration: new BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xff2aa555),
                     shape: BoxShape.circle,
                   ),
                   child: new Column(
@@ -41,7 +62,6 @@ class _State extends State<PaymentSucceeded> {
                         '32,00 TL',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 25.0),
@@ -51,21 +71,28 @@ class _State extends State<PaymentSucceeded> {
                         'Ödeme başarılı',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontWeight: FontWeight.normal,
+                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 16.0),
                       ),
                     ],
                   )),
-              Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 30)),
-              new Text(
-                'İyi Yolculuklar!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromRGBO(19, 101, 148, 1.0),
-                    fontSize: 24.0),
-              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    new Text(
+                      'İyi Yolculuklar!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromRGBO(19, 101, 148, 1.0),
+                          fontSize: 16.0),
+                    ),
+                    Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 50)),
+                  ],
+                )
+              )
             ],
           ) // your body content.
         ));
