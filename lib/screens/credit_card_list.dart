@@ -81,7 +81,7 @@ class _State extends State<CreditCardList> {
                           style: TextStyle(
                               color: Color.fromRGBO(19, 101, 148, 1.0))),
                     ]),
-                    Icon(Icons.add, color: Color.fromRGBO(19, 101, 148, 1.0)),
+                    Icon(Icons.add, color: Color.fromRGBO(19, 101, 148, 1.0), size: 12,),
                   ],
                 ),
               ),
