@@ -20,6 +20,11 @@ class _State extends State<LicensePlate> {
         backgroundColor: Color(0xff005381),
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -33,6 +38,12 @@ class _State extends State<LicensePlate> {
               )
             ],
           ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Colors.white),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
         ),
         body: Padding(
             padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
@@ -104,21 +115,31 @@ class _State extends State<LicensePlate> {
               ),
               Expanded(
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text('ya da', style: TextStyle( color: Colors.white),),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: const TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                          onPressed: () {},
-                          child: const Text('Biletini Tara', style: TextStyle( color: Colors.white,  decoration: TextDecoration.underline,),),
-                        )
-                      ],
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'ya da',
+                      style: TextStyle(color: Colors.white),
                     ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle:
+                            const TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        'Biletini Tara',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 color: Color(0xff005381),
               ))
             ])));

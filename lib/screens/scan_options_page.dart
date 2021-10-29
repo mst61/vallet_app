@@ -15,28 +15,37 @@ class _State extends State<ScanOptionsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xff005381),
+        appBar: AppBar(
+          backgroundColor: Color(0xff005381),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_white.png',
+                fit: BoxFit.contain,
+                height: 24,
+              ),
+              Container(
+                padding: const EdgeInsets.all(24.0),
+              )
+            ],
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Colors.white),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
+        ),
         body: Column(children: <Widget>[
           Expanded(
               child: new Container(
-            child: (Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.fromLTRB(0, 40, 0, 0)),
-                      Image(
-                        image: AssetImage("assets/loading_gif_white.png"),
-                        height: 25.93,
-                      ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
-                      Divider(color: Colors.white)
-                    ],
-                  ),
-                )
-              ],
-            )),
-            padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-            color: Color(0xff005381),
+
           )),
           Container(
             height: 300,
