@@ -7,39 +7,71 @@ class MyAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        backgroundColor: Color(0xff005381),
         appBar: AppBar(
-          title: Text('Hesabım'),
-          leading: BackButton(color: Colors.white),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+          backgroundColor: Color(0xff005381),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_white.png',
+                fit: BoxFit.contain,
+                height: 24,
+              ),
+              Container(
+                padding: const EdgeInsets.all(24.0),
+              )
+            ],
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Colors.white),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
           child: Column(
             children: [
-
+              ProfilePic(),
+              Padding(padding: EdgeInsets.all(2)),
+              Text("Paşa Hazretleri", style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+              ),),
+              Padding(padding: EdgeInsets.all(5)),
               ProfileMenu(
                 text: "Profilim",
-                icon: "assets/icons/Bell.svg",
                 press: () => {},
               ),
               ProfileMenu(
                 text: "Geçmiş Ödemelerim",
-                icon: "assets/icons/Bell.svg",
                 press: () {},
               ),
               ProfileMenu(
                 text: "Kayıtlı Kartlarım",
-                icon: "assets/icons/Settings.svg",
                 press: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => CreditCardList()));
                 },
               ),
               ProfileMenu(
+                text: "Sözleşmeler",
+                press: () {},
+              ),
+              ProfileMenu(
                 text: "Yardım Merkezi",
-                icon: "assets/icons/Settings.svg",
+                press: () {},
+              ),
+              ProfileMenu(
+                text: "Çıkış",
                 press: () {},
               ),
             ],
