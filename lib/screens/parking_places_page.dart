@@ -94,12 +94,30 @@ class _State extends State<ParkingPlacesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+
+      Scaffold(
+          extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: BackButton(color: Colors.white),
-          title: Text("Otoparklar"),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(19, 60, 83, 1.0),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/loading_gif_blue.png',
+                fit: BoxFit.contain,
+                height: 25.93,
+              )
+            ],
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                child: Divider(color: Colors.transparent),
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              preferredSize: Size.fromHeight(4.0)),
         ),
         body: Container(
             child: GoogleMap(

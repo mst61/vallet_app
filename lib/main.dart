@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vallet_app/screens/button_map_screen.dart';
 import 'package:vallet_app/screens/credit_card_list.dart';
+import 'package:vallet_app/screens/scan_options_page.dart';
 
 import 'screens/login_page.dart';
 
@@ -41,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
             MaterialPageRoute(builder: (context) => ButtonMapScreen()));
       } else {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginPage()));
+            MaterialPageRoute(builder: (context) => ButtonMapScreen()));
       };
     });
     super.initState();
@@ -55,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
         image: AssetImage("assets/vallet_app.gif"),
         width: MediaQuery.of(context).size.width * 0.8,
       )),
-      backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+      backgroundColor: Color.fromRGBO(0, 83, 129, 1),
     );
   }
 }

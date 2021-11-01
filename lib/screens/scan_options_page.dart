@@ -25,7 +25,7 @@ class _State extends State<ScanOptionsPage> {
               Image.asset(
                 'assets/loading_gif_white.png',
                 fit: BoxFit.contain,
-                height: 24,
+                height: 25.93,
               )
             ],
           ),
