@@ -29,12 +29,12 @@ class _State extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.5,),
+                          Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.4,),
                           Padding(padding: EdgeInsets.all(10)),
                           Text("PARK ET, ONLINE ÖDE, KOLAY ÇIK!",
                             style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white),
+                                fontSize: 12,
+                                color: Colors.white, fontWeight: FontWeight.w500),
                           )
                         ],
                       ),

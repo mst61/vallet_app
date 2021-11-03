@@ -27,12 +27,12 @@ class _State extends State<SmsVerificationPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.5,),
+                      Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.4,),
                       Padding(padding: EdgeInsets.all(10)),
                       Text("PARK ET, ONLINE ÖDE, KOLAY ÇIK!",
                         style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white),
+                            fontSize: 12,
+                            color: Colors.white, fontWeight: FontWeight.w500),
                       )
                     ],
                   ),
@@ -47,7 +47,7 @@ class _State extends State<SmsVerificationPage> {
                       TextField(
                         controller: codeController,
                         decoration: InputDecoration(
-                            hintText: 'SMS İLE GELEN ŞİFREYİ GİRİNİZ',
+                            hintText: 'SMS KODU',
                             hintStyle: TextStyle(fontSize: 12.0, color: Colors.white),
                             filled: true,
                             fillColor: Color.fromRGBO(185, 207, 221, 1.0),
@@ -57,6 +57,10 @@ class _State extends State<SmsVerificationPage> {
                             )),
                       ),
                       Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      Text("Cep telefonuna SMS ile gelen 6 haneli şifreyi gir.",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white), textAlign: TextAlign.center)
                     ],
                   ),
                 ),
