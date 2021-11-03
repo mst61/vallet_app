@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vallet_app/services/parking_place_service.dart';
 
-import 'scan_options_page.dart';
 
 class ParkingPlacesPage extends StatefulWidget {
   @override
@@ -131,7 +129,7 @@ class _State extends State<ParkingPlacesPage> {
   }
 }
 
-Widget _hoursRow(String first_hour, String second_hour, double price) {
+Widget _hoursRow(String firstHour, String secondHour, double price) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 30.0),
     child: Column(
@@ -141,8 +139,8 @@ Widget _hoursRow(String first_hour, String second_hour, double price) {
         SizedBox(height: 12),
         Row(
           children: <Widget>[
-            Text(first_hour + " - "),
-            Text(second_hour + " saat"),
+            Text(firstHour + " - "),
+            Text(secondHour + " saat"),
             Spacer(),
             Container(
               decoration: BoxDecoration(

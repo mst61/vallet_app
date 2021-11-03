@@ -4,7 +4,6 @@ import 'package:vallet_app/screens/payment_succeeded.dart';
 import 'package:vallet_app/services/card_service.dart';
 
 import 'add_credit_card.dart';
-import 'button_map_screen.dart';
 
 class CreditCardList extends StatefulWidget {
   @override

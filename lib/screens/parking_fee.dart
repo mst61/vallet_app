@@ -12,7 +12,6 @@ class ParkingFee extends StatefulWidget {
 }
 
 class _State extends State<ParkingFee> {
-  int _current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -226,11 +225,5 @@ class _State extends State<ParkingFee> {
         ),
       ),
     );
-  }
-
-  void _selectTab(int value) {
-    setState(() {
-      _current = value;
-    });
   }
 }

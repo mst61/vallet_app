@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
-import 'package:flutter_credit_card/credit_card_widget.dart';
-import 'package:flutter_credit_card/custom_card_type_icon.dart';
-import 'package:flutter_credit_card/glassmorphism_config.dart';
 
-import 'button_map_screen.dart';
-import 'scan_options_page.dart';
 
 class AddCreditCard extends StatefulWidget {
   @override
@@ -39,66 +32,62 @@ class _State extends State<AddCreditCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Add Credit Card',
-      debugShowCheckedModeBanner: false,
-
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios,
-                color: Color.fromRGBO(19, 101, 148, 1.0)),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/loading_gif_blue.png',
-                fit: BoxFit.contain,
-                height: 24,
-              ),
-              Container(
-                padding: const EdgeInsets.all(24.0),
-              )
-            ],
-          ),
-          bottom: PreferredSize(
-              child: Container(
-                child: Divider(color: Color.fromRGBO(19, 101, 148, 1.0)),
-                width: MediaQuery.of(context).size.width * 0.8,
-              ),
-              preferredSize: Size.fromHeight(4.0)),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios,
+              color: Color.fromRGBO(19, 101, 148, 1.0)),
+          onPressed: () => Navigator.of(context).maybePop(),
         ),
-        body: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: SafeArea(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        CreditCardForm(
-                          formKey: formKey,
-                          obscureCvv: true,
-                          obscureNumber: true,
-                          cardNumber: cardNumber,
-                          cvvCode: cvvCode,
-                          isHolderNameVisible: true,
-                          isCardNumberVisible: true,
-                          isExpiryDateVisible: true,
-                          cardHolderName: cardHolderName,
-                          expiryDate: expiryDate,
-                          themeColor: Color.fromRGBO(19, 101, 148, 1.0),
-                          textColor: Colors.black,
-                          cardNumberDecoration: InputDecoration(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/loading_gif_blue.png',
+              fit: BoxFit.contain,
+              height: 24,
+            ),
+            Container(
+              padding: const EdgeInsets.all(24.0),
+            )
+          ],
+        ),
+        bottom: PreferredSize(
+            child: Container(
+              child: Divider(color: Color.fromRGBO(19, 101, 148, 1.0)),
+              width: MediaQuery.of(context).size.width * 0.8,
+            ),
+            preferredSize: Size.fromHeight(4.0)),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      CreditCardForm(
+                        formKey: formKey,
+                        obscureCvv: true,
+                        obscureNumber: true,
+                        cardNumber: cardNumber,
+                        cvvCode: cvvCode,
+                        isHolderNameVisible: true,
+                        isCardNumberVisible: true,
+                        isExpiryDateVisible: true,
+                        cardHolderName: cardHolderName,
+                        expiryDate: expiryDate,
+                        themeColor: Color.fromRGBO(19, 101, 148, 1.0),
+                        textColor: Colors.black,
+                        cardNumberDecoration: InputDecoration(
                             labelText: 'Number',
                             hintText: 'XXXX XXXX XXXX XXXX',
                             hintStyle: const TextStyle(color: Colors.black),
@@ -110,68 +99,67 @@ class _State extends State<AddCreditCard> {
                                 color: Color.fromRGBO(19, 101, 148, 1.0),
                               ),
                             )
-                          ),
-                          expiryDateDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.black),
-                            labelStyle: const TextStyle(color: Colors.black),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'Expired Date',
-                            hintText: 'XX/XX',
-                          ),
-                          cvvCodeDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.black),
-                            labelStyle: const TextStyle(color: Colors.black),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'CVV',
-                            hintText: 'XXX',
-                          ),
-                          cardHolderDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.black),
-                            labelStyle: const TextStyle(color: Colors.black),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'Card Holder',
-                          ),
-                          onCreditCardModelChange: onCreditCardModelChange,
                         ),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3.0),
-                              ),
-                              primary: const Color(0xff1b447b),
+                        expiryDateDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.black),
+                          labelStyle: const TextStyle(color: Colors.black),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'Expired Date',
+                          hintText: 'XX/XX',
+                        ),
+                        cvvCodeDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.black),
+                          labelStyle: const TextStyle(color: Colors.black),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'CVV',
+                          hintText: 'XXX',
+                        ),
+                        cardHolderDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.black),
+                          labelStyle: const TextStyle(color: Colors.black),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'Card Holder',
+                        ),
+                        onCreditCardModelChange: onCreditCardModelChange,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3.0),
                             ),
-                            child: Container(
-                              margin: const EdgeInsets.all(12),
-                              child: const Text(
-                                'Kaydet',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  package: 'flutter_credit_card',
-                                ),
-                              ),
-                            ),
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                print('valid!');
-                              } else {
-                                print('invalid!');
-                              }
-                            },
+                            primary: const Color(0xff1b447b),
                           ),
-                        )
-                      ],
-                    ),
+                          child: Container(
+                            margin: const EdgeInsets.all(12),
+                            child: const Text(
+                              'Kaydet',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                package: 'flutter_credit_card',
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              print('valid!');
+                            } else {
+                              print('invalid!');
+                            }
+                          },
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

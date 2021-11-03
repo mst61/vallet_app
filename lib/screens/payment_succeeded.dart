@@ -6,7 +6,6 @@ class PaymentSucceeded extends StatefulWidget {
 }
 
 class _State extends State<PaymentSucceeded> {
-  int _current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +95,5 @@ class _State extends State<PaymentSucceeded> {
             ],
           ) // your body content.
         ));
-  }
-
-  void _selectTab(int value) {
-    setState(() {
-      _current = value;
-    });
   }
 }

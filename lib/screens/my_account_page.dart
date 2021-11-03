@@ -57,10 +57,10 @@ class MyAccount extends StatelessWidget {
               ),
               ProfileMenu(
                 text: "Kayıtlı Kartlarım",
-                press: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => CreditCardList()));
-                },
+                press: ()  => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CreditCardList()),
+                  ),
               ),
               ProfileMenu(
                 text: "Sözleşmeler",
