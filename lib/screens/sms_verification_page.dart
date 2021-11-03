@@ -16,58 +16,86 @@ class _State extends State<SmsVerificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color(0xff005381),
         body: !apiCall
             ? Padding(
-                padding: EdgeInsets.all(10),
-                child: ListView(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(10),
-                      child: Image(image: AssetImage("assets/Vallet.jfif")),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                      child: TextField(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.5,),
+                      Padding(padding: EdgeInsets.all(10)),
+                      Text("PARK ET, ONLINE ÖDE, KOLAY ÇIK!",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 40),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextField(
                         controller: codeController,
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.car_rental_outlined,
-                                color: Colors.white),
+                            hintText: 'SMS İLE GELEN ŞİFREYİ GİRİNİZ',
+                            hintStyle: TextStyle(fontSize: 12.0, color: Colors.white),
                             filled: true,
                             fillColor: Color.fromRGBO(185, 207, 221, 1.0),
-                            //border: OutlineInputBorder(),
-                            labelText: 'SMS İLE GELEN ŞİFREYİ GİRİNİZ',
                             labelStyle: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 12,
                             )),
                       ),
-                    ),
-                    Container(
-                        height: 70,
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              side: BorderSide(
-                                  width: 2.0,
-                                  color: Color.fromRGBO(185, 207, 221, 1.0)),
-                              primary: Color.fromRGBO(19, 101, 148, 1.0),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 50, vertical: 20),
-                              textStyle: TextStyle(
-                                fontSize: 18,
-                              )),
-                          child: Text('ONAYLA'),
-                          onPressed: () {
-                            setState(() {
-                              apiCall = true; // Set state like this
-                            });
-                            _verify(int.parse(codeController.text));
-                          },
-                        )),
-                  ],
-                ))
+                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ElevatedButton(
+                        child: Container(
+                          margin: const EdgeInsets.all(12),
+                          child: const Text(
+                            'DEVAM ET',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            apiCall = true;
+                          });
+                          _verify(int.parse(codeController.text));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize:
+                          new Size(MediaQuery.of(context).size.width - 60, 40),
+                          side: BorderSide(
+                              width: 1.0,
+                              color: Colors.white),
+                          primary: Color(0xff005381),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ))
             : Center(child: CircularProgressIndicator()));
   }
 

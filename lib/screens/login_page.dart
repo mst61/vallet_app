@@ -62,7 +62,7 @@ class _State extends State<LoginPage> {
                           TextField(
                             controller: phoneController,
                             decoration: InputDecoration(
-                                hintText: 'Telefon Numarası',
+                                hintText: '5_________',
                                 hintStyle: TextStyle(fontSize: 12.0, color: Colors.white),
                                 filled: true,
                                 fillColor: Color.fromRGBO(185, 207, 221, 1.0),
