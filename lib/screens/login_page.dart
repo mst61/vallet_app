@@ -27,7 +27,7 @@ class _State extends State<LoginPage> {
                   children: <Widget>[
                     Expanded(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.5,),
                           Padding(padding: EdgeInsets.all(10)),
@@ -41,9 +41,10 @@ class _State extends State<LoginPage> {
                     ),
                     Container(
                       alignment: Alignment.center,
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 40),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextField(
                             controller: nameController,
@@ -70,7 +71,7 @@ class _State extends State<LoginPage> {
                                   fontSize: 12,
                                 )),
                           ),
-                          Padding(padding: EdgeInsets.all(10)),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                           Text("Girdiğin numaraya tek kullanımlık onay kodu göndereceğiz.",
                             style: TextStyle(
                                 fontSize: 12,
@@ -79,7 +80,7 @@ class _State extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
+                      height: MediaQuery.of(context).size.height * 0.2,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
