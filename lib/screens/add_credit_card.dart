@@ -24,7 +24,7 @@ class _State extends State<AddCreditCard> {
     border = OutlineInputBorder(
       borderSide: BorderSide(
         color: Color.fromRGBO(19, 101, 148, 1.0),
-        width: 2.0,
+        width: 1.0,
       ),
     );
     super.initState();

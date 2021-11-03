@@ -151,7 +151,6 @@ class _State extends State<ScanOptionsPage> {
   Future<void> scanBarcode() async {
     String ticketId;
     var ticketService = new TicketService();
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       String ticketId = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.DEFAULT);

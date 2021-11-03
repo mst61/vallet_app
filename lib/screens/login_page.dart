@@ -18,93 +18,100 @@ class _State extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(19, 101, 148, 1.0),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color(0xff005381),
         body: !apiCall
             ? Padding(
                 padding: EdgeInsets.all(10),
-                child: ListView(
+                child: Column(
                   children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image(image: AssetImage("assets/Vallet.png"), width:  MediaQuery.of(context).size.width * 0.5,),
+                          Padding(padding: EdgeInsets.all(10)),
+                          Text("PARK ET, ONLINE ÖDE, KOLAY ÇIK!",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
                     Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(10),
-                      child: Image(image: AssetImage("assets/Vallet.jfif")),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                      child: TextField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.account_circle_outlined,
-                                color: Colors.white),
-                            filled: true,
-                            fillColor: Color.fromRGBO(185, 207, 221, 1.0),
-                            //border: OutlineInputBorder(),
-                            labelText: 'Ad Soyad',
-                            labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            )),
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: nameController,
+                            decoration: InputDecoration(
+                                hintText: 'İsim, Soyisim',
+                                hintStyle: TextStyle(fontSize: 12.0, color: Colors.white),
+                                filled: true,
+                                fillColor: Color.fromRGBO(185, 207, 221, 1.0),
+                                labelStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                )),
+                          ),
+                          Padding(padding: EdgeInsets.all(10)),
+                          TextField(
+                            controller: phoneController,
+                            decoration: InputDecoration(
+                                hintText: 'Telefon Numarası',
+                                hintStyle: TextStyle(fontSize: 12.0, color: Colors.white),
+                                filled: true,
+                                fillColor: Color.fromRGBO(185, 207, 221, 1.0),
+                                labelStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                )),
+                          ),
+                          Padding(padding: EdgeInsets.all(10)),
+                          Text("Girdiğin numaraya tek kullanımlık onay kodu göndereceğiz.",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white), textAlign: TextAlign.center)
+                        ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                      child: TextField(
-                        controller: phoneController,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.contact_phone,
-                                color: Colors.white),
-                            filled: true,
-                            fillColor: Color.fromRGBO(185, 207, 221, 1.0),
-                            // border: OutlineInputBorder(),
-                            labelText: 'Telefon Numarası',
-                            labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            )),
-                      ),
-                    ),
-                    Container(
-                        height: 70,
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              side: BorderSide(
-                                  width: 2.0,
-                                  color: Color.fromRGBO(185, 207, 221, 1.0)),
-                              primary: Color.fromRGBO(19, 101, 148, 1.0),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 50, vertical: 20),
-                              textStyle: TextStyle(
-                                fontSize: 18,
-                              )),
-                          child: Text('SMS KODU GÖNDER'),
-                          onPressed: () {
-                            setState(() {
-                              apiCall = true;
-                            });
-                            _registerUser(context);
-                          },
-                        )),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(0, 220, 0, 0),
-                        child: Row(
-                          children: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                //Kayıt Sayfası
-                              },
-                              child: Text('Hemen Katılın',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Color.fromRGBO(185, 207, 221, 1.0),
-                                      decoration: TextDecoration.underline)),
-                              style: TextButton.styleFrom(
-                                primary: Color.fromRGBO(185, 207, 221, 1.0),
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ElevatedButton(
+                            child: Container(
+                              margin: const EdgeInsets.all(12),
+                              child: const Text(
+                                'DEVAM ET',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.center,
-                        ))
+                            onPressed: () {
+                              setState(() {
+                                apiCall = true;
+                              });
+                              _registerUser(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize:
+                              new Size(MediaQuery.of(context).size.width - 60, 40),
+                              side: BorderSide(
+                                  width: 1.0,
+                                  color: Colors.white),
+                              primary: Color(0xff005381),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ))
             : Center(child: CircularProgressIndicator()));
