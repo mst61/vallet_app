@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:vallet_app/screens/parking_fee.dart';
 import 'package:vallet_app/services/ticket_service.dart';
+
+
+
 
 class LicensePlate extends StatefulWidget {
   @override
@@ -128,7 +132,8 @@ class _State extends State<LicensePlate> {
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                      },
                       child: const Text(
                         'Biletini Tara',
                         style: TextStyle(
@@ -143,4 +148,5 @@ class _State extends State<LicensePlate> {
               ))
             ])),);
   }
+
 }
