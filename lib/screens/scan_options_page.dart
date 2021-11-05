@@ -153,7 +153,7 @@ class _State extends State<ScanOptionsPage> {
     var ticketService = new TicketService();
     try {
       String ticketId = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
+          '#ff6666', 'Geri Dön', true, ScanMode.DEFAULT);
       ticketService.getTicketById(ticketId).then((ticket) => {
             Navigator.push(
               context,
