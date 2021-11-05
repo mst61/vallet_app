@@ -20,10 +20,11 @@ class _State extends State<ParkingFee> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios,
-              color: Color.fromRGBO(19, 101, 148, 1.0)),
-          onPressed: () => Navigator.of(context).pop(),
+        leading: Center(
+          child: TextButton(
+            onPressed: () => Navigator.of(context).maybePop(),
+            child: Image.asset('assets/arrow_left_blue.png', width: 18,),
+          ),
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,

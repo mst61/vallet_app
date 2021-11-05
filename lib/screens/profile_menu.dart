@@ -28,7 +28,7 @@ class ProfileMenu extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 12
             ),)),
-            Icon(Icons.arrow_forward_ios, size: 12,),
+            Image.asset('assets/arrow_right_white.png', width: 16,)
           ],
         ),
       ),

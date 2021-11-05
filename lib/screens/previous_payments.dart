@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:vallet_app/models/credit_card.dart';
+import 'package:vallet_app/models/payment.dart';
 import 'package:vallet_app/screens/payment_succeeded.dart';
-import 'package:vallet_app/services/card_service.dart';
+import 'package:vallet_app/services/payment_service.dart';
 
-import 'add_credit_card.dart';
 
-class CreditCardList extends StatefulWidget {
+class PreviousPayments extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _State();
 }
 
-class _State extends State<CreditCardList> {
+class _State extends State<PreviousPayments> {
   bool loaded = false;
 
   @override
@@ -50,50 +49,14 @@ class _State extends State<CreditCardList> {
         body: Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(children: [
-            Container(
-                height: MediaQuery.of(context).size.height * 0.2,
-            ),
             Expanded(child: cardListWidget(context)),
-            GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddCreditCard()));
-              },
-              child: Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  border: Border.fromBorderSide(
-                    BorderSide(color: Color.fromRGBO(19, 101, 148, 1.0)),
-                  ),
-                  borderRadius: BorderRadius.circular(3.0),
-                ),
-                width: double.infinity,
-                height: 40,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(children: <Widget>[
-                      Padding(padding: EdgeInsets.all(5)),
-                      Icon(Icons.credit_card,
-                          color: Color.fromRGBO(19, 101, 148, 1.0)),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Text('Yeni Kart Ekle',
-                          style: TextStyle(
-                              color: Color.fromRGBO(19, 101, 148, 1.0))),
-                    ]),
-                    Icon(Icons.add, color: Color.fromRGBO(19, 101, 148, 1.0), size: 12,),
-                  ],
-                ),
-              ),
-            )
           ]),
         ));
   }
 }
 
 Widget cardListWidget(BuildContext context) {
-  final cardService = new CardService();
+  final paymentService = new PaymentService();
   return FutureBuilder<List>(
     builder: (context, snapshot) {
       if (!snapshot.hasData) {
@@ -110,12 +73,12 @@ Widget cardListWidget(BuildContext context) {
           ? Center(
               child: Container(
               child: Text(
-                'Henüz Kart Eklemediniz',
+                'Geçmiş ödemeniz bulunmamaktadır',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromRGBO(19, 101, 148, 1.0),
                   fontSize: 16.0,
                 ),
               ),
@@ -126,9 +89,16 @@ Widget cardListWidget(BuildContext context) {
               itemCount: snapshot.data?.length,
               padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
               itemBuilder: (context, index) {
-                CreditCard card = snapshot.data?[index];
+                Payment payment = snapshot.data?[index];
                 return Card(
-                    color: Color.fromRGBO(19, 101, 148, 1.0),
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Color.fromRGBO(19, 101, 148, 1.0),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(3.0),
+                    ),
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
@@ -136,29 +106,22 @@ Widget cardListWidget(BuildContext context) {
                             MaterialPageRoute(builder: (context) => PaymentSucceeded()));
                       },
                       child: Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(children: <Widget>[
-                              Icon(Icons.credit_card, color: Colors.white),
-                              Padding(padding: EdgeInsets.all(5)),
-                              Text(card.cardDesc,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                            children: <Widget>[
+                              Text(payment.paymentDate.toString() + " - " + payment.parkingPlace!.name ,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromRGBO(19, 101, 148, 1.0),
                                   )),
+                              Image.asset('assets/arrow_right_blue.png', width: 16,)
                             ]),
-                            Text(card.cardNo,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal)),
-                          ],
-                        ),
                       )
                     ));
               },
             );
     },
-    future: cardService.getCards(),
+    future: paymentService.getPayments(),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vallet_app/screens/credit_card_list.dart';
+import 'package:vallet_app/screens/previous_payments.dart';
 import 'package:vallet_app/screens/profile_pic.dart';
 import 'profile_menu.dart';
 
@@ -11,9 +12,14 @@ class MyAccount extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
           elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
+          leading: Center(
+            child: TextButton(
+              onPressed: () => Navigator.of(context).maybePop(),
+              child: Image.asset(
+                'assets/arrow_left_white.png',
+                width: 18,
+              ),
+            ),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,11 +47,13 @@ class MyAccount extends StatelessWidget {
             children: [
               ProfilePic(),
               Padding(padding: EdgeInsets.all(2)),
-              Text("Paşa Hazretleri", style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold
-              ),),
+              Text(
+                "Paşa Hazretleri",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
               Padding(padding: EdgeInsets.all(5)),
               ProfileMenu(
                 text: "Profilim",
@@ -53,14 +61,17 @@ class MyAccount extends StatelessWidget {
               ),
               ProfileMenu(
                 text: "Geçmiş Ödemelerim",
-                press: () {},
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PreviousPayments()),
+                ),
               ),
               ProfileMenu(
                 text: "Kayıtlı Kartlarım",
-                press: ()  => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CreditCardList()),
-                  ),
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreditCardList()),
+                ),
               ),
               ProfileMenu(
                 text: "Sözleşmeler",

@@ -19,9 +19,11 @@ class _State extends State<LicensePlate> {
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
           elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
+          leading: Center(
+            child: TextButton(
+              onPressed: () => Navigator.of(context).maybePop(),
+              child: Image.asset('assets/arrow_left_white.png', width: 18,),
+            ),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
