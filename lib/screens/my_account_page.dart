@@ -15,10 +15,7 @@ class MyAccount extends StatelessWidget {
           leading: Center(
             child: TextButton(
               onPressed: () => Navigator.of(context).maybePop(),
-              child: Image.asset(
-                'assets/arrow_left_white.png',
-                width: 18,
-              ),
+              child: Image.asset('assets/arrow_left_white.png', width: 18,),
             ),
           ),
           title: Row(
@@ -42,7 +39,7 @@ class MyAccount extends StatelessWidget {
               preferredSize: Size.fromHeight(4.0)),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          padding: EdgeInsets.fromLTRB(20, 100, 20, 0),
           child: Column(
             children: [
               ProfilePic(),

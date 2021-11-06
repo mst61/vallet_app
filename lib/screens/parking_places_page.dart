@@ -96,27 +96,30 @@ class _State extends State<ParkingPlacesPage> {
 
       Scaffold(
           extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/loading_gif_blue.png',
-                fit: BoxFit.contain,
-                height: 25.93,
-              )
-            ],
+          appBar: AppBar(
+            backgroundColor:Colors.transparent,
+            elevation: 0,
+            leading: Container(),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/loading_gif_blue.png',
+                  fit: BoxFit.contain,
+                  height: 24,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(24.0),
+                )
+              ],
+            ),
+            bottom: PreferredSize(
+                child: Container(
+                  child: Divider(color: Colors.white),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                ),
+                preferredSize: Size.fromHeight(4.0)),
           ),
-          bottom: PreferredSize(
-              child: Container(
-                child: Divider(color: Colors.transparent),
-                width: MediaQuery.of(context).size.width * 0.8,
-              ),
-              preferredSize: Size.fromHeight(4.0)),
-        ),
         body: Container(
             child: GoogleMap(
           onMapCreated: _onMapCreated,

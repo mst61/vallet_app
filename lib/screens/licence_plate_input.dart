@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter/services.dart';
 import 'package:vallet_app/screens/parking_fee.dart';
 import 'package:vallet_app/services/ticket_service.dart';
-
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 
 
@@ -132,7 +132,8 @@ class _State extends State<LicensePlate> {
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.white),
                       ),
-                      onPressed: () {
+                      onPressed: () {scanBarcode(
+                      );
                       },
                       child: const Text(
                         'Biletini Tara',
@@ -148,5 +149,20 @@ class _State extends State<LicensePlate> {
               ))
             ])),);
   }
-
+  Future<void> scanBarcode() async {
+    var ticketService = new TicketService();
+    try {
+      String ticketId = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Geri Dön', true, ScanMode.DEFAULT);
+      ticketService.getTicketById(ticketId).then((ticket) => {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ParkingFee(ticket),
+          ),
+        )
+      });
+    } on PlatformException {
+    }
+  }
 }

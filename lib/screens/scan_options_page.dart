@@ -18,14 +18,22 @@ class _State extends State<ScanOptionsPage> {
         appBar: AppBar(
           backgroundColor: Color(0xff005381),
           elevation: 0,
-          automaticallyImplyLeading: false,
+          leading: Center(
+            child: TextButton(
+              onPressed: () => Navigator.of(context).maybePop(),
+              child: Image.asset('assets/arrow_left_white.png', width: 18,),
+            ),
+          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 'assets/loading_gif_white.png',
                 fit: BoxFit.contain,
-                height: 25.93,
+                height: 24,
+              ),
+              Container(
+                padding: const EdgeInsets.all(24.0),
               )
             ],
           ),
@@ -50,7 +58,8 @@ class _State extends State<ScanOptionsPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () => scanBarcode(),
+                      onPressed: () => scanBarcode(
+                                   ),
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.all(30),
                         primary: Color(0xff005381),
