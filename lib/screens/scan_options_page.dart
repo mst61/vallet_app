@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:vallet_app/screens/barcode_scan_page.dart';
 import 'package:vallet_app/screens/licence_plate_input.dart';
 import 'package:vallet_app/screens/parking_fee.dart';
 import 'package:vallet_app/services/ticket_service.dart';
@@ -58,8 +59,10 @@ class _State extends State<ScanOptionsPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () => scanBarcode(
-                                   ),
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ValletScan()),
+                      ),
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.all(30),
                         primary: Color(0xff005381),
